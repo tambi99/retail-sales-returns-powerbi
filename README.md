@@ -4,6 +4,24 @@
 
 A two-page interactive report for Harbor Home & Office, a fictional US retailer. This project uses Power BI modeling, DAX measures, and interactive visuals to explain sales performance and identify where returns are concentrated. The underlying retail dataset is synthetic; amounts are USD.
 
+## KPI definitions and results
+
+These are the unfiltered results for **2025 order cohorts**, including recorded returns against those orders. Sales and return measures select completed orders. Exact totals were independently recalculated from the report's Excel source using the extracted formulas and checked against the rounded dashboard cards and visible matrix totals.
+
+| KPI | Definition in this report | Result |
+|---|---|---:|
+| Sales Before Return | Gross sales less discounts on completed orders | $1,976,441.70 |
+| Refund Amount | Returned quantity multiplied by the original unit price, before discounts | $110,775.00 |
+| Net Sales After Refunds | Sales Before Return less Refund Amount | $1,865,666.70 |
+| Returned Units | Sum of returned quantities for completed orders | 648 |
+| Returned Orders | Distinct completed order IDs with at least one return | 302 |
+| Return Rate | Returned units divided by 12,354 units sold | 5.25% |
+| Return Order Rate | Returned orders divided by 1,661 completed orders | 18.18% |
+| Average Refund per Returned Order | Refund Amount divided by Returned Orders | $366.80 |
+| Top Return Reason | Reason with the highest Refund Amount | Wrong item |
+
+**Calculation basis:** Refunds use prices before discounts, while sales before returns already deduct discounts. Net sales therefore reflects that saved valuation choice. Monthly refund trends follow the original order date, rather than the date of the return. The [measure documentation](docs/model-and-measures.md) explains these choices and the model's filter behavior.
+
 ## Project objectives
 
 - Summarize sales before returns, refund value, and sales remaining after refunds.
@@ -31,24 +49,6 @@ Explores category return rates, monthly refunds, returned orders by region, retu
 ![Returns Analysis dashboard](images/returns-analysis.png)
 
 The page previews were rendered from the report's native PDF export. The [original Executive Overview desktop screenshot](images/executive-overview-desktop.png) is also preserved.
-
-## KPI definitions and results
-
-These are the unfiltered results for **2025 order cohorts**, including recorded returns against those orders. Sales and return measures select completed orders. Exact totals were independently recalculated from the report's Excel source using the extracted formulas and checked against the rounded dashboard cards and visible matrix totals.
-
-| KPI | Definition in this report | Result |
-|---|---|---:|
-| Sales Before Return | Gross sales less discounts on completed orders | $1,976,441.70 |
-| Refund Amount | Returned quantity multiplied by the original unit price, before discounts | $110,775.00 |
-| Net Sales After Refunds | Sales Before Return less Refund Amount | $1,865,666.70 |
-| Returned Units | Sum of returned quantities for completed orders | 648 |
-| Returned Orders | Distinct completed order IDs with at least one return | 302 |
-| Return Rate | Returned units divided by 12,354 units sold | 5.25% |
-| Return Order Rate | Returned orders divided by 1,661 completed orders | 18.18% |
-| Average Refund per Returned Order | Refund Amount divided by Returned Orders | $366.80 |
-| Top Return Reason | Reason with the highest Refund Amount | Wrong item |
-
-**Calculation basis:** Refunds use prices before discounts, while sales before returns already deduct discounts. Net sales therefore reflects that saved valuation choice. Monthly refund trends follow the original order date, rather than the date of the return. The [measure documentation](docs/model-and-measures.md) explains these choices and the model's filter behavior.
 
 ## Business insights
 
